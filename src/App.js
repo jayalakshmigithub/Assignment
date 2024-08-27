@@ -4,6 +4,9 @@ import Cart from "./Components/Cart";
 import ProductList from "./Components/ProductList";
 import Product from "./Components/Products";
 import data from './Data/data.json'
+import OrderModal from "./Components/OrderModal";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 
@@ -23,6 +26,7 @@ function App() {
       <ProductList products={data} addToCart={addToCart}/>
       <Cart cartItems={cartItems} removeItemsCart={removeItemsCart}
       itemCount ={cartItems.length}/>
+    
     </div>
   );
 }

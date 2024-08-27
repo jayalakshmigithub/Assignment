@@ -2,9 +2,12 @@ import React,{useState} from "react";
 import data from "../Data/data.json";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { CiPizza } from "react-icons/ci";
+import OrderModal from "./OrderModal";
+
 
 const Cart = ({cartItems,removeItemsCart,itemCount}) => {
   const [itemsCount,setitemsCount] = useState(1)
+  const [showModal ,setIshowModal] =useState(false)
   const handleIncrease=()=>{
     setitemsCount(itemsCount+1)
   }
@@ -14,8 +17,17 @@ const Cart = ({cartItems,removeItemsCart,itemCount}) => {
     }
     
   }
+  const handleOrderClick=()=>{
+    setIshowModal(true)
+    console.log('modal clicked')
+
+  }
+  const closeModal=()=>{
+    setIshowModal(false)
+  }
 
   return (
+    <>
     <div className="cartTab">
       <h1>Your Cart ({itemCount})</h1>
       <div className="listcart">
@@ -41,8 +53,14 @@ const Cart = ({cartItems,removeItemsCart,itemCount}) => {
              
             </div>
            
+           
+           
           </div>
+          
+         
+         
         ))
+        
       ):(
         <div class="card" >
         <div class="card-overlay"> </div>
@@ -54,13 +72,19 @@ const Cart = ({cartItems,removeItemsCart,itemCount}) => {
       )}
       </div>
       {cartItems.length>0 &&(
+         
+         
       <div className="btn">
-       
-        <button className="order">Confirm order</button>
+        
+        
+        <button className="order" onClick={handleOrderClick}>Confirm order</button>
       </div>
+      
       )}
+     <OrderModal show={showModal} handleClose={closeModal} cartItems={cartItems}/>
        
     </div>
+    </>
   );
 };
 

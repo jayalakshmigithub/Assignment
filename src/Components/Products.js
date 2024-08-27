@@ -2,6 +2,7 @@ import React from "react";
 import { MdShoppingCart } from "react-icons/md";
 
 const Product = ({ name, price, category, image, showAddtoCart = true , addToCart}) => {
+  
   console.log("name", name);
   return (
     <div className="product">
